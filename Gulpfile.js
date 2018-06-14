@@ -96,10 +96,12 @@ gulp.task('updateCacheBuster', function(){
 
 
 gulp.task('javascripting', function() {
+    var options = {
+        mode: "production"
+      };
     gulp.src('./src/js/*.js')
-    //gulp.src(['./src/js/test.js', './src/js/pageone.js'])
-    .pipe(named())
-      .pipe(webpackStream(webpackConfig), webpack)
+      .pipe(named()) //swaps in individual files
+      .pipe(webpackStream(webpackConfig), webpack).on('error', console.error.bind(console))
       .pipe(gulp.dest('./www/js'));
   });
 

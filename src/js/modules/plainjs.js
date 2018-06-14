@@ -1,14 +1,14 @@
-console.log("some js.. should be updating");
+console.log("I am modules/plain.js");
 
 
-function globalFunc() {
-    console.log("can I be called?");
+function globalFunc(aString) {
+    console.log("globalFunc called");
 
-    return 1234;
+    return "A strng from globalFunc: " + aString;
 }
 
 
-var thing=globalFunc();
+var thing=globalFunc("one");
 console.log(thing);
 
 

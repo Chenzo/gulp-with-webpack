@@ -1,12 +1,8 @@
-console.log("test js file.. watch test");
+console.log("I am test.js");
 
 import * as plainjs from './modules/plainjs.js';
-//import style from "../_scss/main.scss";
 
 
-console.log("imported!!");
+var someVal = plainjs.globalFunc("two");
+console.log("last thing: " + someVal);
 
-
-//this function exists in planjs.js
-
-plainjs.globalFunc();
