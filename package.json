@@ -7,6 +7,7 @@
   "author": "Chenzo",
   "license": "MIT",
   "devDependencies": {
+    "autoprefixer": "^8.6.2",
     "babel-core": "^6.26.0",
     "browser-sync": "^2.23.5",
     "gulp": "^3.9.1",
@@ -16,6 +17,7 @@
     "gulp-iconfont": "^9.1.0",
     "gulp-iconfont-css": "^2.1.0",
     "gulp-imagemin": "^4.1.0",
+    "gulp-postcss": "^7.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.6.1",
     "gulp-sass": "^3.1.0",

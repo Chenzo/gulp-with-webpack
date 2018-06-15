@@ -1,5 +1,34 @@
 .home {
 
+    section {
+        padding: 50px;
+    }
 
+    .thing {
+        transition: all 4s ease; //doesn't need prefixes anymore.
+        border-radius: 10px 5px; //doesn't need prefixes...
+        display: flex;
+
+        div {
+            display: block;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin: 20px;
+            flex: 1;
+        }
+
+    }
+
+
+    input {
+        background: white;
+        padding: 10px;
+        margin: 10px 0;
+        width: 400px;
+    }
+    ::placeholder {
+        color: blue;
+    }
 	
 }

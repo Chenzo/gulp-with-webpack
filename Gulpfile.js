@@ -27,40 +27,37 @@ Generate SVG Font:
 
 var gulp = require('gulp'),
 	sass = require('gulp-sass'),
-	concat = require('gulp-concat'),
-	uglify = require('gulp-uglify'),
-	rename = require('gulp-rename'),
+	concat = require('gulp-concat'), //unused?
+	uglify = require('gulp-uglify'), //unused?
+	rename = require('gulp-rename'), //unused now?
     sourcemaps = require('gulp-sourcemaps'),
     pump = require('pump'),
 	wait = require('gulp-wait'),
     replace = require('gulp-replace'),
     spritesmith = require('gulp.spritesmith'),
     babel = require('gulp-babel'),
-	fs = require('fs'),
-    path = require('path'),
+	fs = require('fs'), //unused now?
+    path = require('path'), //unused now?
     flatmap = require('gulp-flatmap'),
     iconfontCSS = require('gulp-iconfont-CSS'),
     iconfont = require('gulp-iconfont'),
     imagemin= require('gulp-imagemin'),
     run = require('gulp-run-command').default;
 
+//For Webpack/JS: 
+var webpack = require('webpack'),
+    webpackStream = require('webpack-stream'),
+    webpackConfig = require('./webpack.config.js');
+var named = require('vinyl-named');
+
+//For PostCSS/AutoPrefixer
+var postcss = require('gulp-postcss'),
+    autoprefixer = require('autoprefixer');
+
 var browserSync = require('browser-sync').create();
 var scriptsPath = './src/js/';
 var fontName = 'toll-icons';
 
-var webpack = require('webpack'),
-    webpackStream = require('webpack-stream'),
-    webpackConfig = require('./webpack.config.js');
-
-var named = require('vinyl-named');
-
-//Loop through a directory and get the directories within...
-function getFolders(dir){
-    return fs.readdirSync(dir)
-    .filter(function(file){
-        return fs.statSync(path.join(dir, file)).isDirectory();
-    });
-}
 
 //Task - run docker
 gulp.task('docker', run('docker-compose -f config/docker/docker-compose.yml up --build'));
@@ -73,7 +70,8 @@ gulp.task('styles', function() {
     gulp.src('./src/scss/**/*.scss')
         .pipe(wait(500)) //Slight delay for Windows Users
         .pipe(sourcemaps.init())
-        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(sass({outputStyle: 'uncompressed'}).on('error', sass.logError))
+        .pipe(postcss([autoprefixer({browsers: ['last 2 version']})]))
         .pipe(sourcemaps.write('/maps'))
         .pipe(gulp.dest('./www/css/'))
         .pipe(browserSync.stream());        
