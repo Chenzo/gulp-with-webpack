@@ -27,21 +27,12 @@ Generate SVG Font:
 
 var gulp = require('gulp'),
 	sass = require('gulp-sass'),
-	concat = require('gulp-concat'), //unused?
-	uglify = require('gulp-uglify'), //unused?
-	rename = require('gulp-rename'), //unused now?
     sourcemaps = require('gulp-sourcemaps'),
     pump = require('pump'),
 	wait = require('gulp-wait'),
     replace = require('gulp-replace'),
     spritesmith = require('gulp.spritesmith'),
     babel = require('gulp-babel'),
-	fs = require('fs'), //unused now?
-    path = require('path'), //unused now?
-    flatmap = require('gulp-flatmap'),
-    iconfontCSS = require('gulp-iconfont-CSS'),
-    iconfont = require('gulp-iconfont'),
-    imagemin= require('gulp-imagemin'),
     run = require('gulp-run-command').default;
 
 //For Webpack/JS: 
@@ -54,9 +45,19 @@ var named = require('vinyl-named');
 var postcss = require('gulp-postcss'),
     autoprefixer = require('autoprefixer');
 
+//Browser sync
 var browserSync = require('browser-sync').create();
-var scriptsPath = './src/js/';
+
+//SVG to font:
+var iconfontCSS = require('gulp-iconfont-CSS'),
+    iconfont = require('gulp-iconfont'),
+    imagemin= require('gulp-imagemin');
 var fontName = 'toll-icons';
+
+
+
+
+
 
 
 //Task - run docker
@@ -94,16 +95,11 @@ gulp.task('updateCacheBuster', function(){
 
 
 gulp.task('javascripting', function() {
-    var options = {
-        mode: "production"
-      };
     gulp.src('./src/js/*.js')
       .pipe(named()) //swaps in individual files
       .pipe(webpackStream(webpackConfig), webpack).on('error', console.error.bind(console))
       .pipe(gulp.dest('./www/js'));
   });
-
-
 
 
 
