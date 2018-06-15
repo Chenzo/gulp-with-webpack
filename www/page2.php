@@ -15,7 +15,7 @@
                 <a href="index.php">index</a>
         </section>
 
-        <script type="text/javascript" src="js/pageone.js"></script>
+        <script type="text/javascript" src="js/pagetwo.js"></script>
         
     </body>
 </html>

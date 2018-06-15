@@ -1,4 +1,4 @@
-console.log(`I've been required by Webpack`);
+console.log("pagetwo.js fired");
 import { runFunction } from './modules/mymodule.js';
 
 

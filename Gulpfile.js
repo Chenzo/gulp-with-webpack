@@ -68,7 +68,7 @@ gulp.task('docker', run('docker-compose -f config/docker/docker-compose.yml up -
 
 //Task - compiles SCSS files into a single compressed CSS file with a sourcemap
 gulp.task('styles', function() {
-    gulp.src('./src/scss/**/*.scss')
+   return gulp.src('./src/scss/**/*.scss')
         .pipe(wait(500)) //Slight delay for Windows Users
         .pipe(sourcemaps.init())
         .pipe(sass({outputStyle: 'uncompressed'}).on('error', sass.logError))

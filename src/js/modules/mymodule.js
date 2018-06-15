@@ -6,5 +6,5 @@ function insideFunction() {
 
 
 export function runFunction() {
-    return insideFunction();
+    return insideFunction;
 }
