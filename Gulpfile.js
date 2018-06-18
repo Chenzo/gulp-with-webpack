@@ -57,9 +57,6 @@ var fontName = 'toll-icons';
 
 
 
-
-
-
 //Task - run docker
 gulp.task('docker', run('docker-compose -f config/docker/docker-compose.yml up --build'));
 
